@@ -28,8 +28,8 @@ alias 2="feh --bg-fill ~/Images/Spiderman/MilesFight.jpeg"
 alias 3="feh --bg-fill ~/Images/Spiderman/PunkRock.jpeg"
 alias 4="feh --bg-fill ~/Images/Spiderman/LeapOfFaith.jpeg"
 
-alias mac="cd ~/OSX-KVM/ ;bash /home/jules/OSX-KVM/OpenCore-Boot.sh"
+alias mac="cd ~/OSX-KVM/ ;bash ~/OSX-KVM/OpenCore-Boot.sh"
 
 alias sleep="lock && systemctl suspend"
 alias stardew="cd /home/jules/.steam/steam/steamapps/common/'Stardew Valley'/Mods"
-alias show="sxiv"
+alias img="sxiv"
