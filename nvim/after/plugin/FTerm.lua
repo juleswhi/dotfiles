@@ -1,8 +1,8 @@
 require'FTerm'.setup({
-    border = 'none',
+    border = 'single',
     dimemsions = {
-        height = 1,
-        width = 1
+        height = 1.5,
+        width = 1.5
     },
 })
 
