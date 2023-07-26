@@ -2,10 +2,12 @@
 exec --no-startup-id dex --autostart --environment i3
 font pango:monospace 8
 set $mod Mod4
+set $browser firefox
+set $terminal alacritty
 
 # Open on startup
-exec alacritty
-exec brave
+exec $terminal
+exec $browser
 exec discord
 
 
@@ -15,8 +17,8 @@ bindsym $mod+Shift+o exec i3lock -c 00000000
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 #Open Programs Quickly
-bindsym $mod+i exec brave
-bindsym $mod+Return exec alacritty
+bindsym $mod+i exec $browser
+bindsym $mod+Return exec $terminal
 
 
 # Close Window
@@ -174,3 +176,18 @@ mode "resize" {
 
 }
 
+
+
+
+
+focus_follows_mouse yes
+
+# class         #border #backgr #text #indicator #child_border
+client.focused #92C5BA #92C5BA #92C5BA #92C5BA #92C5BA
+client.focused_inactive #FEC8D8 #FEC8D8 #FEC8D8 #FEC8D8 #BEADC9
+client.unfocused #FEC8D8 #FEC8D8 #FEC8D8 #FEC8D8 #BEADC9
+
+gaps inner 5px
+gaps outer 10px
+
+for_window [class="^.*"] border pixel 3
