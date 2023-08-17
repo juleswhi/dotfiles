@@ -187,7 +187,7 @@ client.focused #92C5BA #92C5BA #92C5BA #92C5BA #92C5BA
 client.focused_inactive #FEC8D8 #FEC8D8 #FEC8D8 #FEC8D8 #BEADC9
 client.unfocused #FEC8D8 #FEC8D8 #FEC8D8 #FEC8D8 #BEADC9
 
-gaps inner 5px
-gaps outer 10px
+gaps inner 3px
+gaps outer 5px
 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 1
