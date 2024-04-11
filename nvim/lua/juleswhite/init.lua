@@ -7,10 +7,24 @@ require('juleswhite.commands')
 
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>l", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>b", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>p", [["+p]])
+vim.keymap.set("n", "<leader>P", [["+P]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+vim.keymap.set("n", "<leader><leader>", function()
+    vim.cmd("so")
+end)
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -52,6 +66,9 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
+vim.opt.cursorline = false
+
+vim.opt.inccommand = 'split'
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
