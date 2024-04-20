@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ "$#" -eq 0 ]; then
+    echo "--- Enter Git Url ---"
+    read -p "> " repo
+else
+    repo=$1
+fi
+
+localdir=~/projects
+username="juleswhi"
+url="git@github.com:$username/$repo.git"
+
+git clone "$url" "$localdir/$repo"
+echo "cloned"

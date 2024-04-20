@@ -1,6 +1,7 @@
 vim.cmd [[
     command! Wallpaper lua Wallpaper()
     command! Waifu lua WallpaperDefault()
+    command! Ghibles lua Ghibiles()
 ]]
 
 function Wallpaper()
@@ -29,3 +30,12 @@ function WallpaperDefault()
 end
 
 
+function Ghibiles()
+    local path = "/home/juleswhite/images/anime/ghibles.png"
+    local file = io.open("/home/juleswhite/.wallpaper.txt", "w")
+    if file then
+        file:write(path)
+        file:close()
+        vim.fn.system("bash -i -c 'source /home/juleswhite.bashrc'")
+    end
+end
