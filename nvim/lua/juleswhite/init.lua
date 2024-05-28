@@ -15,7 +15,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>p", [["+p]])
 vim.keymap.set("n", "<leader>P", [["+P]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -81,7 +81,7 @@ vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
 
 vim.opt.scrolloff = 6
-vim.opt.updatetime = 50
+vim.opt.updatetime = 10
 
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -101,12 +101,11 @@ return require('packer').startup(function(use)
 
     use { "ellisonleao/gruvbox.nvim" }
 
+    -- use 'f4z3r/gruvbox-material.nvim'
+
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     use "nvim-lua/plenary.nvim"
-
-    use "xiyaowong/transparent.nvim"
-
     use {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
