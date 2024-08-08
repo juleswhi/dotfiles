@@ -10,9 +10,8 @@ alias grep='grep --color=auto'
 PS1='$ '
 EDITOR=nvim
 
-alias v='~/.nvim-bin/bin/nvim'
-alias vi='~/.nvim-bin/bin/nvim'
-alias vim='~/.nvim-bin/bin/nvim'
+alias v='nvim'
+alias vi='nvim'
 
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
