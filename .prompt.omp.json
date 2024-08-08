@@ -21,12 +21,6 @@
           "style": "plain",
           "template": " <#DDB15F>git(</>{{ .HEAD }}<#DDB15F>)</>",
           "type": "git"
-        },
-        {
-          "foreground": "#DCB977",
-          "style": "plain",
-          "template": " \uf119",
-          "type": "status"
         }
       ],
       "type": "prompt"
