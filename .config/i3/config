@@ -33,7 +33,7 @@ for_window [class="ruby" instance="ruby"] floating enable
 # exec --no-startup-id picom
 
 
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 bindsym $mod+x kill
 
 bindsym $mod+d exec --no-startup-id dmenu_run

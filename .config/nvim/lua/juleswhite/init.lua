@@ -54,7 +54,7 @@ vim.opt.mouse = ""
 -- CONFIG --
 
 vim.o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd([[colorscheme gruvbox]])
 
 vim.opt.guicursor = ""
 
