@@ -7,29 +7,26 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
+PS1='$ '
+EDITOR=nvim
 
+alias v='~/.nvim-bin/bin/nvim'
+alias vi='~/.nvim-bin/bin/nvim'
+alias vim='~/.nvim-bin/bin/nvim'
+
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+export PATH=$PATH:/usr/local/go/bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
-feh --bg-fill ~/Images/Spiderman/LeapOfFaith.jpg
-# feh --bg-fill ~/Images/Spiderman/GwenRoom.jpg
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/home/juleswhite/.zig
+alias music="termusic"
 
-alias monitor="xrandr --output DP-4 --mode 1920x1080 --rate 144.00 --right-of HDMI-0 --output HDMI-0 --mode 1920x1080 --rate 60.00"
-
-alias vim="nvim" 
-
-alias lock="i3lock -c 00000000"
-. "$HOME/.cargo/env"
-
-
-alias 1="feh --bg-fill ~/Images/Spiderman/GwenPlane.png"
-alias 2="feh --bg-fill ~/Images/Spiderman/MilesFight.jpeg"
-alias 3="feh --bg-fill ~/Images/Spiderman/PunkRock.jpeg"
-alias 4="feh --bg-fill ~/Images/Spiderman/LeapOfFaith.jpeg"
-
-alias mac="cd ~/OSX-KVM/ ;bash ~/OSX-KVM/OpenCore-Boot.sh"
-
-alias sleep="lock && systemctl suspend"
-alias stardew="cd /home/jules/.steam/steam/steamapps/common/'Stardew Valley'/Mods"
-alias img="sxiv"
+alias find-man="compgen -c | fzf | xargs man"
