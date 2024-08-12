@@ -2,6 +2,9 @@
 normal = { family = "Fira Mono Nerd Font ", style = "Regular" }
 size = 20
 
+[window]
+opacity = 1.0
+
 [colors.primary]
 background = '#282828'
 

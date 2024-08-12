@@ -54,7 +54,7 @@ vim.opt.mouse = ""
 -- CONFIG --
 
 vim.o.background = "dark"
--- vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme kanagawa]])
 
 vim.opt.guicursor = ""
 
@@ -94,14 +94,16 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- Themes
+    use "rebelot/kanagawa.nvim"
+    use "ellisonleao/gruvbox.nvim"
+    use 'f4z3r/gruvbox-material.nvim'
+    use "scottmckendry/cyberdream.nvim"
+
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.6',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-
-    use { "ellisonleao/gruvbox.nvim" }
-
-    -- use 'f4z3r/gruvbox-material.nvim'
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
@@ -109,14 +111,10 @@ return require('packer').startup(function(use)
         "stevearc/oil.nvim",
         config = function()
             require("oil").setup({
-                -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
-                -- Set to false if you still want to use netrw.
                 default_file_explorer = true,
-                -- Id is automatically added at the beginning, and name at the end
-                -- See :help oil-columns
                 columns = {
                     "icon",
-                    -- "permissions",
+                    "permissions",
                     -- "size",
                     -- "mtime",
                 },
@@ -125,7 +123,6 @@ return require('packer').startup(function(use)
                     buflisted = false,
                     bufhidden = "hide",
                 },
-                -- Window-local options to use for oil buffers
                 win_options = {
                     wrap = false,
                     signcolumn = "no",
@@ -136,16 +133,9 @@ return require('packer').startup(function(use)
                     conceallevel = 3,
                     concealcursor = "nvic",
                 },
-                -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
                 delete_to_trash = false,
-                -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
-                skip_confirm_for_simple_edits = false,
-                -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
-                -- (:help prompt_save_on_select_new_entry)
+                skip_confirm_for_simple_edits = true,
                 prompt_save_on_select_new_entry = true,
-                -- Oil will automatically delete hidden buffers after this delay
-                -- You can set the delay to false to disable cleanup entirely
-                -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
                 cleanup_delay_ms = 2000,
                 lsp_file_methods = {
                     -- Time to wait for LSP file operations to complete before skipping
@@ -158,13 +148,7 @@ return require('packer').startup(function(use)
                 -- Set to `false` to disable, or "name" to keep it on the file names
                 constrain_cursor = "editable",
                 -- Set to true to watch the filesystem for changes and reload oil
-                experimental_watch_for_changes = false,
-                -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
-                -- options with a `callback` (e.g. { callback = function() ... end, desc = "", mode = "n" })
-                -- Additionally, if it is a string that matches "actions.<name>",
-                -- it will use the mapping at require("oil.actions").<name>
-                -- Set to `false` to remove a keymap
-                -- See :help oil-actions for a list of all available actions
+                experimental_watch_for_changes = true,
                 keymaps = {
                     ["g?"] = "actions.show_help",
                     ["<CR>"] = "actions.select",
@@ -183,34 +167,23 @@ return require('packer').startup(function(use)
                     ["g."] = "actions.toggle_hidden",
                     ["g\\"] = "actions.toggle_trash",
                 },
-                -- Set to false to disable all of the above keymaps
                 use_default_keymaps = true,
                 view_options = {
-                    -- Show files and directories that start with "."
                     show_hidden = false,
-                    -- This function defines what is considered a "hidden" file
                     is_hidden_file = function(name, bufnr)
                         return vim.startswith(name, ".")
                     end,
-                    -- This function defines what will never be shown, even when `show_hidden` is set
                     is_always_hidden = function(name, bufnr)
                         return false
                     end,
-                    -- Sort file names in a more intuitive order for humans. Is less performant,
-                    -- so you may want to set to false if you work with large directories.
                     natural_order = true,
                     sort = {
-                        -- sort order can be "asc" or "desc"
-                        -- see :help oil-columns to see which columns are sortable
                         { "type", "asc" },
                         { "name", "asc" },
                     },
                 },
-                -- Extra arguments to pass to SCP when moving/copying files over SSH
                 extra_scp_args = {},
-                -- EXPERIMENTAL support for performing file operations with git
                 git = {
-                    -- Return true to automatically git add/mv/rm files
                     add = function(path)
                         return false
                     end,
@@ -307,3 +280,5 @@ return require('packer').startup(function(use)
         }
     }
 end)
+
+
