@@ -5,6 +5,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+stty -ixon
+shopt -s autocd
+
+alias sp="sudo pacman"
+alias ss="sudo systemctl"
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='$ '
@@ -21,10 +27,11 @@ export PATH=$PATH:~/.local/bin
 
 eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
+. "$HOME/.cargo/env"
+
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/home/juleswhite/.zig
 alias music="termusic"
 
-alias find-man="compgen -c | fzf | xargs man"
-. "$HOME/.cargo/env"
+alias fdm="compgen -c | fzf | xargs man"
