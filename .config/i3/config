@@ -6,7 +6,7 @@ exec --no-startup-id nm-applet
 
 exec --no-startup-id "xmodmap ~/.Xmodmap"
 exec_always --no-startup-id "picom --no-fading-openclose &"
-exec_always --no-startup-id "feh --randomize --bg-fill ~/photos/*"
+exec_always --no-startup-id "feh --bg-fill ~/.config/wall.png"
 
 bindsym Print exec flameshot gui
 
