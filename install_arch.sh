@@ -3,7 +3,7 @@
 ### Required Packages
 
 sudo pacman -Syyu --noconfirm
-sudo pacman --noconfirm -S git neovim vim curl zip unzip feh alacritty i3 xorg xorg-xinit sxiv firefox tmux stow
+sudo pacman --noconfirm -S git neovim vim curl zip unzip feh alacritty i3 xorg xorg-xinit sxiv firefox tmux stow picom
 
 rm ~/.bash_profile
 
