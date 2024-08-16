@@ -114,7 +114,7 @@ return require('packer').startup(function(use)
                 default_file_explorer = true,
                 columns = {
                     "icon",
-                    "permissions",
+                    -- "permissions",
                     -- "size",
                     -- "mtime",
                 },

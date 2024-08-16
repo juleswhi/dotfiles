@@ -13,6 +13,7 @@ alias ss="sudo systemctl"
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+
 PS1='$ '
 EDITOR=nvim
 
@@ -29,7 +30,7 @@ eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
 . "$HOME/.cargo/env"
 
-export GOPATH=$HOME/go
+export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/home/juleswhite/.zig
 alias music="termusic"
