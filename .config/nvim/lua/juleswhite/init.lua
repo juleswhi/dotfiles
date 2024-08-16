@@ -54,7 +54,7 @@ vim.opt.mouse = ""
 -- CONFIG --
 
 vim.o.background = "dark"
-vim.cmd([[colorscheme kanagawa]])
+-- vim.cmd([[colorscheme kanagawa]])
 
 vim.opt.guicursor = ""
 
