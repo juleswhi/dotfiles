@@ -9,6 +9,8 @@ exec_always --no-startup-id "picom --no-fading-openclose &"
 exec_always --no-startup-id "feh --bg-fill ~/.config/wall.png"
 
 bindsym Print exec flameshot gui
+bindsym $mod+p exec "xdotool type $(grep -v '^#' ~/.local/share/jarbs/snippets | dmenu -i -l 50 | cut -d' ' -f1)"
+bindsym $mod+t exec "bookmarker"
 
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf -b --experimental-backends
 

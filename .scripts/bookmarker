@@ -1,0 +1,6 @@
+#!/bin/sh
+
+bookmark="$(xclip -o)"
+file="$HOME/.local/share/jarbs/snippets"
+
+grep -q "^$bookmark$" "$file" || echo "$bookmark" >> "$file"

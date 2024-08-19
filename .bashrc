@@ -28,7 +28,7 @@ export PATH=$PATH:~/.local/bin
 
 eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
@@ -36,3 +36,4 @@ export PATH=$PATH:/home/juleswhite/.zig
 alias music="termusic"
 
 alias fdm="compgen -c | fzf | xargs man"
+alias la="ls -a"
