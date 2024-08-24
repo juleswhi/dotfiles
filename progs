@@ -24,3 +24,5 @@ xorg-xprop
 mpd
 ncmpcpp
 libnewt
+otf-jetbrains-nerd
+gnome-polkit
