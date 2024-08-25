@@ -26,7 +26,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 export PATH=$PATH:~/.local/bin
 
-eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
+# eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
 # . "$HOME/.cargo/env"
 
