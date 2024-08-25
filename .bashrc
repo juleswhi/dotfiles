@@ -26,9 +26,9 @@ export PATH=$PATH:/usr/local/go/bin
 
 export PATH=$PATH:~/.local/bin
 
-# eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
+eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
-# . "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
@@ -39,4 +39,3 @@ alias fdm="compgen -c | fzf | xargs man"
 alias la="ls -a"
 
 # xinput set-prop "deviceid" "libinput Accel Profile Enabled" 0 1 0
-

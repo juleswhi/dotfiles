@@ -1,70 +1,60 @@
-*{
-  font-size: 13px;
-  font-family: "Jetbrains Mono";
-  color: #dadada;
-}
-#waybar {
-  background: transparent;
-  border-radius: 5px;
-}
-#workspaces{
-  border-radius:5px;
-  box-shadow:0px 0px black;
+* {
+  border: none;
+  font-family: 'Fira Mono Nerd', 'Symbols Nerd Font Mono';
+  font-size: 16px;
+  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  min-height: 45px;
 }
 
-#workspaces,
-#network,
-#backlight,
-#wireplumber,
-#clock,
-#battery,
-#idle_inhibitor,
-#custom-lizzy,
-#bluetooth,
-#custom-power,
-#custom-notification{
-  margin-left:5px;
-  margin-right: 5px;
-  background: #141b1e;
-  border-radius:5px 0px 0px 5px;
-  padding-left:10px;
+window#waybar {
+  background: transparent;
+}
+
+#custom-arch, #workspaces {
+  border-radius: 10px;
+  background-color: #11111b;
+  color: #b4befe;
+  margin-top: 15px;
+  margin-right: 15px;
+  padding-top: 1px;
+  padding-left: 10px;
   padding-right: 10px;
 }
 
-#network,
-#wireplumber,
-#backlight,
-#bluetooth{
-  margin:0px;
-}
-#backlight,
-#bluetooth{
-  border-radius:0px;
-}
-#wireplumber{
-  border-radius: 0px 5px 5px 0px;
+#custom-arch {
+  font-size: 20px;
+  margin-left: 15px;
+  color: #b4befe;
 }
 
-#idle_inhibitor,
-#clock,
-#workspaces,
-#custom-lizzy,
-#custom-power,
-#battery,
-#custom-notification{
-  border-radius: 5px;
+#workspaces button {
+  background: #11111b;
+  color: #b4befe;
 }
 
-#idle_inhibitor.activated{
-  color:#e57474;
+#clock, #backlight, #pulseaudio, #bluetooth, #network, #battery{
+  border-radius: 10px;
+  background-color: #11111b;
+  color: #cdd6f4;
+  margin-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 15px;
 }
 
-#custom-power{
-color:#c47fd5;
-margin-right:10px;
-padding-right:14px;
+#backlight, #bluetooth {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 5px;
+  margin-right: 0
 }
 
+#pulseaudio, #network {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 5px;
+}
 
-
-
+#clock {
+  margin-right: 0;
+}

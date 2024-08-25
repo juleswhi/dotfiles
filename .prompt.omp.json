@@ -10,7 +10,7 @@
             "style": "folder"
           },
           "style": "plain",
-          "template": " {{ .Path }}",
+          "template": "{{ .Path }}",
           "type": "path"
         },
         {
