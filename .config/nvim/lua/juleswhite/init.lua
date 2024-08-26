@@ -86,6 +86,8 @@ vim.opt.updatetime = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+vim.g.zig_fmt_autosave = false
+
 -- PLUGINS --
 
 vim.cmd [[packadd packer.nvim]]
