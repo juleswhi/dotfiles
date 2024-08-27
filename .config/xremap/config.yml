@@ -1,0 +1,4 @@
+modmap:
+  - name: Caps
+    remap:
+      CapsLock: Enter
