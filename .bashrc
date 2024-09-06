@@ -35,6 +35,8 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/home/juleswhite/.zig
 alias music="termusic"
 
+export hyprconf=~/dotfiles/.config/hypr
+
 alias fdm="compgen -c | fzf | xargs man"
 alias la="ls -a"
 
