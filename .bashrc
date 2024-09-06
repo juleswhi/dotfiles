@@ -39,3 +39,7 @@ alias fdm="compgen -c | fzf | xargs man"
 alias la="ls -a"
 
 # xinput set-prop "deviceid" "libinput Accel Profile Enabled" 0 1 0
+
+alias xre="sudo xremap $HOME/.config/xremap/config.yml &"
+
+alias roblox="flatpak run org.vinegarhq.Sober"

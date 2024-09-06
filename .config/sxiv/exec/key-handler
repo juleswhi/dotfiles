@@ -4,7 +4,6 @@ do
     fullpath="$(pwd)/$file"
     case "$1" in
     "w")
-        cp "$file" ~/.config/wall.png &&
-        feh --bg-fill "$HOME/.config/wall.png" ;;
+        cp "$file" ~/.config/wall.png
     esac
 done

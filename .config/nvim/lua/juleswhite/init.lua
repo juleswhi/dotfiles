@@ -54,7 +54,7 @@ vim.opt.mouse = ""
 -- CONFIG --
 
 vim.o.background = "dark"
-vim.cmd([[colorscheme kanagawa]])
+vim.cmd([[colorscheme gruvbox]])
 
 vim.opt.guicursor = ""
 
@@ -106,6 +106,16 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', tag = '0.1.6',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+
+    use({
+      'tigion/nvim-asciidoc-preview',
+      run = 'cd server && npm install',
+      config = function()
+        require('asciidoc-preview').setup({
+          -- Add user configuration here
+        })
+      end,
+    })
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
