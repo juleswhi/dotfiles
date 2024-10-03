@@ -45,3 +45,6 @@ alias la="ls -a"
 alias xre="sudo xremap $HOME/.config/xremap/config.yml &"
 
 alias roblox="flatpak run org.vinegarhq.Sober"
+eval "$(thefuck --alias)"
+alias scott="ssh juleswhi@scott.qnet.org.uk"
+alias r="hyprctl reload"
