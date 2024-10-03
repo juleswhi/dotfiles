@@ -102,6 +102,8 @@ return require('packer').startup(function(use)
     use 'f4z3r/gruvbox-material.nvim'
     use "scottmckendry/cyberdream.nvim"
 
+    use "rose-pine/neovim"
+
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.6',
         requires = { { 'nvim-lua/plenary.nvim' } }
