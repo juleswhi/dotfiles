@@ -46,5 +46,10 @@ alias xre="sudo xremap $HOME/.config/xremap/config.yml &"
 
 alias roblox="flatpak run org.vinegarhq.Sober"
 eval "$(thefuck --alias)"
-alias scott="ssh juleswhi@scott.qnet.org.uk"
+alias scott="ssh juleswhi@192.168.74.2"
 alias r="hyprctl reload"
+alias vorp_db='mariadb -h 192.168.74.2 -u vorp -p --skip-ssl vorp'
+alias run="make run NAME=J"
+VP_NAME=J
+NAME=J
+alias commit="git add . && git commit -m $1 && git push"
