@@ -3,9 +3,9 @@ return {
     config = function()
         require "staline".setup {
             sections = {
-                left = { '  ', 'mode', ' ', 'branch', ' ', 'lsp' },
+                left = { '  ', 'branch', ' ', 'cwd' },
                 mid = {},
-                right = {'file_name', 'line_column' }
+                right = { 'file_name', 'line_column' }
             },
             mode_colors = {
                 i = "#9C8AA5",
@@ -20,5 +20,13 @@ return {
                 branch_symbol = " "
             }
         }
+        -- cool line
+        -- require "staline".setup {
+        --     sections = {
+        --         left = { ("▁"):rep(vim.o.columns) }, -- change thickness: "_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"
+        --         mid = {},
+        --         right = {}
+        --     },
+        -- }
     end
 }
