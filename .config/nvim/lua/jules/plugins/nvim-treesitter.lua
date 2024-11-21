@@ -12,9 +12,10 @@ return {
                 "vim",
                 "vimdoc",
                 "zig",
+                "go",
                 "rust",
             },
-            sync_install = false,
+            sync_install = true,
             highlight = { enable = true },
         })
     end,

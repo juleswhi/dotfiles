@@ -26,7 +26,8 @@ return {
                 "lua_ls",
                 "zls",
                 "clangd",
-                "rust_analyzer"
+                "rust_analyzer",
+                "gopls",
             },
             -- Auto-install configured servers (with lspconfig)
             automatic_installation = true, -- Not the same as ensure_installed

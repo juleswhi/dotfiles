@@ -3,13 +3,15 @@ local opt = vim.opt
 opt.guicursor = ""
 opt.mouse = ""
 
+opt.showmode = false
 opt.nu = true
 opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.autoindent = true
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.autoindent = true
+opt.termguicolors = true
 opt.expandtab = true
 
 opt.smartindent = true

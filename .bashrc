@@ -56,3 +56,4 @@ alias commit="git add . && git commit -m $1 && git push"
 export mcmods=~/.minecraft/mods
 export vpn_username=zhkbsr8XPwwyvqMU
 export vpn_password=67Nmmr7f4Ha9u88NzS4kncGeXFszbGTb
+export ALACRITTY_CONFIG=$HOME/.config/alacritty/alacritty.toml
