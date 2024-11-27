@@ -1,9 +1,9 @@
 [font]
-normal = { family = "Fira Mono Nerd Font ", style = "Regular" }
+normal = { family = "JetbrainsMono NF", style = "Regular" }
 size = 20
 
 [window]
-opacity = 0.6
+opacity = 1
 
 [colors.primary]
 background = '#282828'

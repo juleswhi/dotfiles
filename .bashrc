@@ -14,8 +14,14 @@ alias ss="sudo systemctl"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-PS1='$ '
+source /usr/share/git/completion/git-prompt.sh
+
+# eval "$(starship init bash)"
+# PS1='┏ [\e[1;34m\u\e[0m@\e[1;32m\h\e[0m]-[\e[1;31m\e[0m]-[\e[1;36m$(date +%H:%M:%S)\e[0m]-[\e[33;1m\w\e[0m] ┗ $ '
+PS1='\W $(__git_ps1 "git:%s ")$ '
 EDITOR=nvim
+
+eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
 alias v='nvim'
 alias vi='nvim'
@@ -25,8 +31,6 @@ export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 export PATH=$PATH:/usr/local/go/bin
 
 export PATH=$PATH:~/.local/bin
-
-eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
 . "$HOME/.cargo/env"
 
