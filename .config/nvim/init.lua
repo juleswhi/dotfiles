@@ -1,2 +1,2 @@
-require("jules.core")
-require("jules.lazy")
+require("juleswhi")
+

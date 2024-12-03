@@ -1,5 +1,7 @@
 local km = vim.keymap
 
+vim.g.mapleader = " "
+
 km.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 km.set('n', '<leader>d', '<cmd>DBUI<CR>')
 
@@ -40,3 +42,12 @@ vim.api.nvim_set_keymap('c', '<Up>', '<Nop>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('c', '<Down>', '<Nop>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('c', '<Left>', '<Nop>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('c', '<Right>', '<Nop>', { noremap = true, silent = true })
+
+
+
+-- This is going to get me cancelled
+vim.keymap.set("i", "<C-c>", "<Esc>")
+
+vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)

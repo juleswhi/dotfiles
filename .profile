@@ -2,7 +2,7 @@
 
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-# xmodmap ~/.Xmodmap
+eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
 [ -f ~/.bashrc ] && source ~/.bashrc
 

@@ -1,16 +1,13 @@
 set $mod Mod1
-font pango:monospace 8
+font pango:JetBrainsMono 8
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
-exec --no-startup-id "xmodmap ~/.Xmodmap"
-exec_always --no-startup-id "picom --no-fading-openclose &"
+# exec_always --no-startup-id "picom --no-fading-openclose &"
 exec_always --no-startup-id "feh --bg-fill ~/.config/wall.png"
 
 bindsym Print exec flameshot gui
-bindsym $mod+p exec "xdotool type $(grep -v '^#' ~/.local/share/jarbs/snippets | dmenu -i -l 50 | cut -d' ' -f1)"
-bindsym $mod+t exec "bookmarker"
 
 # exec --no-startup-id picom --config ~/.config/picom/picom.conf -b --experimental-backends
 
@@ -30,14 +27,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-for_window [class="ruby" instance="ruby"] floating enable
-
-# bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/type-6/launcher.sh
-# bindsym $mod+slash exec --no-startup-id ~/.config/rofi/powermenu/type-5/powermenu.sh
-# exec --no-startup-id picom
-
-
 bindsym $mod+Return exec alacritty
+bindsym $mod+t exec chromium
 bindsym $mod+x kill
 
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -94,6 +85,11 @@ bindsym $mod+Shift+g move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
+
+set $monitor_one DP-4
+
+workspace $ws1 output $monitor_one
+workspace $ws2 output $monitor_one
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
