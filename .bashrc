@@ -37,3 +37,9 @@ export ALACRITTY_CONFIG=$HOME/.config/alacritty/alacritty.toml
 . "$HOME/.cargo/env"
 
 export mac=12:e1:7d:f8:a3:e5
+eval OPAM_LAST_ENV='/home/callum/.opam/.last-env/env-62d3ec69affbc6fa444ea91fe3b295ff-0'; export OPAM_LAST_ENV;
+OPAM_SWITCH_PREFIX='/home/callum/.opam/default'; export OPAM_SWITCH_PREFIX;
+CAML_LD_LIBRARY_PATH='/home/callum/.opam/default/lib/stublibs:/usr/lib/ocaml/stublibs:/usr/lib/ocaml'; export CAML_LD_LIBRARY_PATH;
+OCAML_TOPLEVEL_PATH='/home/callum/.opam/default/lib/toplevel'; export OCAML_TOPLEVEL_PATH;
+MANPATH=':/home/callum/.opam/default/man'; export MANPATH;
+PATH='/home/callum/.opam/default/bin:/home/callum/.cargo/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/callum/.local/bin:/home/callum/.local/bin:/home/callum/.local/bin'; export PATH;

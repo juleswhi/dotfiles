@@ -19,6 +19,7 @@ km.set({ "n", "v" }, "<leader>y", [["+y]])
 km.set("n", "<leader>p", [["+p]])
 km.set("n", "<leader>P", [["+P]])
 km.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 km.set("n", "<leader>b", ":Oil <Enter>")
 
@@ -43,11 +44,3 @@ vim.api.nvim_set_keymap('c', '<Down>', '<Nop>', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('c', '<Left>', '<Nop>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('c', '<Right>', '<Nop>', { noremap = true, silent = true })
 
-
-
--- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
-
-vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)

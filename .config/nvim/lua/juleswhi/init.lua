@@ -2,8 +2,10 @@ require("juleswhi.set")
 require("juleswhi.remap")
 require("juleswhi.lazy_init")
 
+vim.cmd([[colorscheme vscode]])
+
 local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup('ThePrimeagen', {})
+local julesgroup = augroup('JulesWhite', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -30,25 +32,13 @@ autocmd('TextYankPost', {
 })
 
 autocmd({"BufWritePre"}, {
-    group = ThePrimeagenGroup,
+    group = julesgroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
-autocmd('BufEnter', {
-    group = ThePrimeagenGroup,
-    callback = function()
-        if vim.bo.filetype == "zig" then
-            vim.cmd.colorscheme("tokyonight-night")
-        else
-            vim.cmd.colorscheme("gruvbox")
-        end
-    end
-})
-
-
 autocmd('LspAttach', {
-    group = ThePrimeagenGroup,
+    group = julesgroup,
     callback = function(e)
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
