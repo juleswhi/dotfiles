@@ -16,7 +16,7 @@ return {
                 }
             },
             extensions = {
-                fzf = {}
+                fzf = {},
             },
         })
 

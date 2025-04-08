@@ -23,7 +23,7 @@ opt.backspace = "indent,eol,start"
 opt.wrap = false
 opt.cursorline = false
 
-opt.signcolumn = "yes" -- Show sign column so that text doesn't s
+opt.signcolumn = "yes"
 
 opt.inccommand = 'split'
 

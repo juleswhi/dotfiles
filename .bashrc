@@ -13,12 +13,13 @@ alias grep='grep --color=auto'
 
 EDITOR=nvim
 
+export PATH=$PATH:~/.local/bin
+
 eval "$(oh-my-posh init bash --config ~/.prompt.omp.json)"
 
 alias v='nvim'
 alias vi='nvim'
-
-export PATH=$PATH:~/.local/bin
+alias vim='nvim'
 
 alias fdm="compgen -c | fzf | xargs man"
 
@@ -43,3 +44,5 @@ CAML_LD_LIBRARY_PATH='/home/callum/.opam/default/lib/stublibs:/usr/lib/ocaml/stu
 OCAML_TOPLEVEL_PATH='/home/callum/.opam/default/lib/toplevel'; export OCAML_TOPLEVEL_PATH;
 MANPATH=':/home/callum/.opam/default/man'; export MANPATH;
 PATH='/home/callum/.opam/default/bin:/home/callum/.cargo/bin:/sbin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/callum/.local/bin:/home/callum/.local/bin:/home/callum/.local/bin'; export PATH;
+
+export balatro_path=/home/callum/.local/share/Steam/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro

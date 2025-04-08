@@ -2,7 +2,7 @@ require("juleswhi.set")
 require("juleswhi.remap")
 require("juleswhi.lazy_init")
 
-vim.cmd([[colorscheme vscode]])
+vim.cmd([[colorscheme rose-pine]])
 
 local augroup = vim.api.nvim_create_augroup
 local julesgroup = augroup('JulesWhite', {})
@@ -19,6 +19,9 @@ vim.filetype.add({
         templ = 'templ',
     }
 })
+
+vim.cmd('autocmd BufEnter * set formatoptions-=cro')
+vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 
 autocmd('TextYankPost', {
     group = yank_group,

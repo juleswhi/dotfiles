@@ -62,6 +62,14 @@ return {
                                 runtime = { version = "Lua 5.1" },
                                 diagnostics = {
                                     globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+                                },
+                                workspace = {
+                                    checkThirdParty = false,
+                                    telemetry = { enable = false },
+                                    library = {
+                                        "${3rd}/love2d/library",
+                                        "${3rd}/nuklear"
+                                    }
                                 }
                             }
                         }
