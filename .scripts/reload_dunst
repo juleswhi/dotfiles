@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pkill -SIGHUP dunst || killall -SIGHUP dunst

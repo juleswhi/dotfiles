@@ -1,0 +1,100 @@
+#!/bin/bash
+
+API_URL="https://api.github.com/users/juleswhi/repos"
+# Define your projects directory
+PROJECTS_DIR="$HOME/projects"
+
+# Check if fzf is installed
+if ! command -v fzf &>/dev/null; then
+    echo "Error: fzf is not installed."
+    echo "Please install fzf to use this script."
+    echo "See: https://github.com/junegunn/fzf#installation"
+    exit 1
+fi
+
+# Check if jq is installed
+if ! command -v jq &>/dev/null; then
+    echo "Error: jq is not installed."
+    echo "jq is required to parse the GitHub API response."
+    echo "Please install jq to use this script."
+    exit 1
+fi
+
+# Use curl to fetch the repository data from the GitHub API
+REPOS=$(curl -s "$API_URL")
+
+# Check if the curl command was successful
+if [ $? -ne 0 ]; then
+    echo "Error fetching repositories for user '$GITHUB_USERNAME'."
+    echo "Please check the username and your internet connection."
+    exit 1
+fi
+
+# Parse the JSON output to get repository names and clone URLs
+# We'll use an array to store both the name and clone URL for easier selection
+# jq will output each name and clone_url on a new line, separated by a space.
+# This format works well with fzf's default behavior.
+REPO_DATA=$(echo "$REPOS" | jq -r '.[] | .name + " " + .clone_url')
+
+if [ -z "$REPO_DATA" ]; then
+    echo "No public repositories found for user '$GITHUB_USERNAME'."
+    exit 0
+fi
+
+echo "Select a repository to clone:"
+
+# Use fzf to select a repository
+# --prompt: Set the fzf prompt
+# --with-nth 1: Only display the first field (the repository name) in fzf
+# --layout=reverse: Display fzf from the bottom
+SELECTED_REPO=$(echo "$REPO_DATA" | fzf \
+    --prompt="Clone Repo > " \
+    --with-nth 1 \
+    --layout=reverse)
+
+# Check if a repository was selected (fzf returns nothing if canceled)
+if [ -z "$SELECTED_REPO" ]; then
+    echo "No repository selected."
+    exit 0
+fi
+
+# Extract the clone URL from the selected line
+# We use cut to get the second field, assuming the format "name clone_url"
+CLONE_URL=$(echo "$SELECTED_REPO" | cut -d ' ' -f 2)
+REPO_NAME=$(echo "$SELECTED_REPO" | cut -d ' ' -f 1)
+
+# Create the projects directory if it doesn't exist
+if [ ! -d "$PROJECTS_DIR" ]; then
+    echo "Creating projects directory: $PROJECTS_DIR"
+    mkdir -p "$PROJECTS_DIR"
+    if [ $? -ne 0 ]; then
+        echo "Error creating projects directory."
+        exit 1
+    fi
+fi
+
+# Clone the repository into the projects directory
+echo "Cloning '$REPO_NAME' into '$PROJECTS_DIR'..."
+git clone "$CLONE_URL" "$PROJECTS_DIR/$REPO_NAME"
+
+# Check if the clone was successful
+if [ $? -eq 0 ]; then
+
+    if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+        tmux new-session -s $REPO_NAME -c $HOME/projects/$REPO_NAME -n $REPO_NAME
+        exit 0
+    fi
+
+    if ! tmux has-session -t=$REPO_NAME 2> /dev/null; then
+        tmux new-session -ds $REPO_NAME -c $HOME/projects/$REPO_NAME -n $REPO_NAME
+    fi
+
+    tmux switch-client -t $REPO_NAME
+    # Optional: Change directory into the cloned repository
+    # cd "$PROJECTS_DIR/$REPO_NAME"
+    # echo "Changed directory to $(pwd)"
+else
+    echo "Error cloning '$REPO_NAME'."
+    exit 1
+fi
+

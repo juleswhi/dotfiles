@@ -1,0 +1,2 @@
+hyprlock &
+systemctl suspend

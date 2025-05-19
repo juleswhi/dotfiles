@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# cp "~/.images/$(sxiv -r -q -o *)" ~/.config/wallpaper.png
+sxiv -r -q -o ~/.images/* | xargs -I {} cp "{}" ~/.config/wallpaper.png
+
+pkill -9 hyprpaper
+
+nohup hyprpaper &
+
+notify-send -a "Wallpaper" "Updated Wallpaper"
