@@ -1,0 +1,166 @@
+#!/bin/bash
+
+GITHUB_USERNAME="juleswhi"
+API_URL="https://api.github.com/users/$GITHUB_USERNAME/repos"
+PROJECTS_DIR="$HOME/projects"
+
+LOCAL_SEARCH_PATHS=(
+    "$HOME/projects"
+    "$HOME/dotfiles/.config"
+)
+
+start_tmux_session() {
+    local session_name="$1"
+
+    tmux_running=$(pgrep tmux)
+
+    if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+        tmux new-session -s "$session_name" -c "$HOME/projects/$session_name" -n "$session_name"
+        exit 0
+    fi
+
+    if ! tmux has-session -t="$session_name" 2> /dev/null; then
+        tmux new-session -ds "$session_name" -c "$HOME/projects/$session_name" -n "$session_name"
+    fi
+
+    tmux switch-client -t "$session_name"
+    exit 0
+}
+
+LOCAL_REPO_PATHS_FILE=$(mktemp)
+
+for search_path in "${LOCAL_SEARCH_PATHS[@]}"; do
+    if [ -d "$search_path" ]; then
+        find "$search_path" -mindepth 1 -maxdepth 1 -type d >> "$LOCAL_REPO_PATHS_FILE"
+    fi
+done
+
+if ! command -v fzf &>/dev/null; then
+    echo "INSTALL FZF"
+    rm "$LOCAL_REPO_PATHS_FILE"
+    exit 1
+fi
+
+if ! command -v jq &>/dev/null; then
+    echo "INSTALL JQ"
+    rm "$LOCAL_REPO_PATHS_FILE"
+    exit 1
+fi
+
+# Fetch repository data using the API
+REPOS=$(curl -s "$API_URL")
+
+if [ $? -ne 0 ]; then
+    echo "COULD NOT GET GITHUB REPOSITORY LIST"
+    rm "$LOCAL_REPO_PATHS_FILE"
+    exit 1
+fi
+
+GITHUB_REPO_DATA_FILE=$(mktemp)
+# Extract the repository name and the SSH clone URL
+echo "$REPOS" | jq -r '.[] | .name + " " + .ssh_url' > "$GITHUB_REPO_DATA_FILE"
+
+if [ ! -s "$GITHUB_REPO_DATA_FILE" ] && [ ! -s "$LOCAL_REPO_PATHS_FILE" ]; then
+    echo "No public repositories found for user '$GITHUB_USERNAME' and no local repositories found in specified paths."
+    rm "$LOCAL_REPO_PATHS_FILE" "$GITHUB_REPO_DATA_FILE"
+    exit 0
+fi
+
+COMBINED_LIST_FILE=$(mktemp)
+
+while IFS= read -r repo_path; do
+    if [ -n "$repo_path" ]; then
+        echo "[lc] $repo_path" >> "$COMBINED_LIST_FILE"
+    fi
+done < "$LOCAL_REPO_PATHS_FILE"
+
+while IFS= read -r repo_entry; do
+    repo_name=$(echo "$repo_entry" | cut -d ' ' -f 1)
+    clone_url=$(echo "$repo_entry" | cut -d ' ' -f 2) # This will now be the SSH URL
+    expected_local_path="$PROJECTS_DIR/$repo_name"
+
+    if [ ! -d "$expected_local_path" ]; then
+        echo "[gh] $repo_name $clone_url" >> "$COMBINED_LIST_FILE"
+    fi
+done < "$GITHUB_REPO_DATA_FILE"
+
+# Check if the combined list is empty
+if [ ! -s "$COMBINED_LIST_FILE" ]; then
+    echo "No repositories to display after filtering."
+    rm "$LOCAL_REPO_PATHS_FILE" "$GITHUB_REPO_DATA_FILE" "$COMBINED_LIST_FILE"
+    exit 0
+fi
+
+
+echo "Select a repository:"
+
+# Use fzf to select from the combined list
+# Display only the [source] and repo name for clarity in fzf
+SELECTED_ENTRY=$(cat "$COMBINED_LIST_FILE" | fzf \
+    --prompt="> " \
+    --with-nth 1,2 \
+    --delimiter ' ' \
+    --algo=v1 \
+    )
+
+# Clean up temporary files
+rm "$LOCAL_REPO_PATHS_FILE" "$GITHUB_REPO_DATA_FILE" "$COMBINED_LIST_FILE"
+
+# Check if an entry was selected (fzf returns nothing if canceled)
+if [ -z "$SELECTED_ENTRY" ]; then
+    echo "No repository selected."
+    exit 0
+fi
+
+# --- Step 5: Process Selection ---
+
+# Determine if the selection is local or from GitHub
+source=$(echo "$SELECTED_ENTRY" | cut -d ' ' -f 1 | tr -d '[]') # Extracts "local" or "github"
+repo_data=$(echo "$SELECTED_ENTRY" | cut -d ' ' -f 2-)         # Gets the rest of the line
+
+if [ "$source" == "lc" ]; then
+    selected_path=$(echo "$repo_data")
+    selected_name=$(basename "$selected_path" | tr . _)
+    echo "Selected local repository: $selected_path"
+    start_tmux_session "$selected_name"
+elif [ "$source" == "gh" ]; then
+    repo_name=$(echo "$repo_data" | cut -d ' ' -f 1)
+    clone_url=$(echo "$repo_data" | cut -d ' ' -f 2) # This is now the SSH URL
+    cloned_repo_path="$PROJECTS_DIR/$repo_name"
+
+    # Create the projects directory if it doesn't exist
+    if [ ! -d "$PROJECTS_DIR" ]; then
+        echo "Creating projects directory: $PROJECTS_DIR"
+        mkdir -p "$PROJECTS_DIR"
+        if [ $? -ne 0 ]; then
+            echo "Error creating projects directory."
+            exit 1
+        fi
+    fi
+
+    # Although we filtered, a race condition is theoretically possible.
+    # Double-check existence before cloning.
+    if [ -d "$cloned_repo_path" ]; then
+         echo "Repository '$repo_name' already exists in '$PROJECTS_DIR' (unexpected based on filtering, using local copy)."
+         selected_name=$(basename "$cloned_repo_path" | tr . _)
+         start_tmux_session "$selected_name"
+    else
+        echo "Cloning '$repo_name' into '$PROJECTS_DIR' using SSH..."
+        # Use the SSH clone URL
+        git clone "$clone_url" "$cloned_repo_path"
+
+        # Check if the clone was successful
+        if [ $? -eq 0 ]; then
+            echo "Successfully cloned '$repo_name'."
+            selected_name=$(basename "$cloned_repo_path" | tr . _)
+            start_tmux_session "$selected_name"
+        else
+            echo "Error cloning '$repo_name' using SSH."
+            exit 1
+        fi
+    fi
+else
+    echo "Unknown source type in selected entry."
+    exit 1
+fi
+

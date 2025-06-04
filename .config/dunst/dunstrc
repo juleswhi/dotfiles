@@ -3,7 +3,7 @@
     follow = none
     width = 300
     height = 300
-    origin = top-right
+    origin = top-center
     offset = 20x20
     scale = 0
     notification_limit = 20
@@ -15,13 +15,13 @@
     progress_bar_corner_radius = 4
     icon_corner_radius = 5
     indicate_hidden = yes
-    transparency = 10
+    transparency = 70
     separator_height = 2
     horizontal_padding = 8
     text_icon_padding = 10
     gap_size = 5
     separator_color = auto
-    sort = yes
+    sort = no
     font = JetBrains Mono Nerd Font 8
     line_height = 3
     markup = full

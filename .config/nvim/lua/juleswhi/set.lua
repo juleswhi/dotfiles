@@ -35,4 +35,3 @@ opt.colorcolumn = "80"
 
 opt.scrolloff = 6
 opt.updatetime = 10
-

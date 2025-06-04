@@ -1,0 +1,13 @@
+#!/bin/bash
+
+MPD_STATUS=$(mpc status)
+
+if echo "$MPD_STATUS" | grep -q "paused"; then
+    PLAYBACK_STATUS="Paused"
+elif echo "$MPD_STATUS" | grep -q "playing"; then
+    PLAYBACK_STATUS="Playing"
+else
+    PLAYBACK_STATUS="Stopped" # Or handle stopped status differently if needed
+fi
+
+echo $PLAYBACK_STATUS

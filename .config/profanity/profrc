@@ -1,0 +1,17 @@
+[ui]
+theme=gruvbox_transparent
+statusbar.show.name=true
+statusbar.show.read=false
+statusbar.show.number=false
+titlebar.position=1
+mainwin.position=2
+statusbar.position=3
+inputwin.position=4
+
+[alias]
+scott=/msg scott@crumble-technologies.co.uk
+1=/win 1
+2=/win 2
+
+[connection]
+account=callum@juleswhite.site
