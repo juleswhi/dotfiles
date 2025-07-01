@@ -14,12 +14,6 @@ function R(name)
     require("plenary.reload").reload_module(name)
 end
 
-vim.filetype.add({
-    extension = {
-        templ = 'templ',
-    }
-})
-
 vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 
