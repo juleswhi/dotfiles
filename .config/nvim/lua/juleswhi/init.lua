@@ -2,7 +2,7 @@ require("juleswhi.set")
 require("juleswhi.remap")
 require("juleswhi.lazy_init")
 
-vim.cmd([[colorscheme kanagawa]])
+vim.cmd([[colorscheme bamboo]])
 
 local augroup = vim.api.nvim_create_augroup
 local jg = augroup('jg', {})

@@ -15,6 +15,8 @@ alias htop='btop'
 alias fdm="compgen -c | fzf | xargs man"
 alias go_proto_gen="protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative packet.proto"
 
+export LAPTOP='192.168.1.243'
+
 alias youtube="yt-x"
 
 . "$HOME/.cargo/env"
