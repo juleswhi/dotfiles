@@ -1,8 +1,11 @@
 # 20%
 ipmitool -I lanplus -H 192.168.1.244 -U root -P 'Pawelek6992425#' raw 0x30 0x30 0x02 0xff 0x14
 
+# Set to manual mode
+# ipmitool -I lanplus -H 192.168.1.244 -U root -P 'Pawelek6992425#'  raw 0x30 0x30 0x01 0x00
+
 # 25%
-# ipmitool -I lanplus -H SERVERS_IP_HERE -U IDRAC_USERNAME -P 'IDRAC_PASSWORD_HERE' raw 0x30 0x30 0x02 0xff 0x19
+# ipmitool -I lanplus -H 192.168.1.244 -U root -P 'Pawelek6992425#' raw 0x30 0x30 0x02 0xff 0x19
 
 # 30%
 # ipmitool -I lanplus -H SERVERS_IP_HERE -U IDRAC_USERNAME -P 'IDRAC_PASSWORD_HERE' raw 0x30 0x30 0x02 0xff 0x1E
