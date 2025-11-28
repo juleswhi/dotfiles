@@ -1,0 +1,11 @@
+notify-send -t "5000" -a "Battery 0 Status" "$(cat /sys/class/power_supply/BAT0/capacity)"
+notify-send -t "5000" -a "Battery 1 Status" "$(cat /sys/class/power_supply/BAT1/capacity)"
+notify-send -t "5000" -a "Time" "$(date +%R)"
+notify-send -t "5000" -a "Network" "$(nmcli -o | head -n 1)"
+notify-send -t "5000" -a "Bluetooth" "$(bluetoothctl devices \
+  | awk '{print $2}' \
+  | xargs -n1 -I{} sh -c 'bluetoothctl info {} \
+      | grep -q "Connected: yes" && echo {}' \
+  | head -n1 \
+  | xargs bluetoothctl info \
+  | awk -F 'Name: ' '/Name:/{print $2;exit}')"

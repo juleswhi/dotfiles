@@ -2,12 +2,13 @@
 
 ## General
 show=drun
-prompt=التطبيقات
+prompt=
 normal_window=true
 layer=top
 
-width=600px
-height=400px
+width=750
+always_parse_args=true
+height=400
 location=0
 orientation=vertical
 halign=fill
@@ -23,13 +24,13 @@ image_size=24
 exec_search=false
 hide_search=false
 parse_search=false
-insensitive=false
+insensitive=true
 
 ## Other
 hide_scroll=false
 no_actions=true
 sort_order=default
-gtk_dark=false
+gtk_dark=true
 filter_rate=100
 
 key_expand=Tab

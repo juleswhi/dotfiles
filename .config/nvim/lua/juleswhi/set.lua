@@ -18,6 +18,8 @@ opt.smartindent = true
 
 opt.swapfile = false
 
+opt.winborder = "rounded"
+
 opt.backspace = "indent,eol,start"
 
 opt.wrap = false

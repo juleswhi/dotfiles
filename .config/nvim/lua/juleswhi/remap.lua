@@ -6,6 +6,8 @@ km.set('n', "<space><space>x", "<cmd>source %<CR>")
 km.set('n', "<space>x", ":.lua<CR>")
 km.set('v', "<space>x", ":lua<CR>")
 
+km.set('n', "<space><space>c", "i``````<C-c>hhi")
+
 km.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 km.set('n', '<leader>d', '<cmd>DBUI<CR>')
 

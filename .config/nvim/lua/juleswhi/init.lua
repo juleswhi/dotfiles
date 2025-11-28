@@ -2,7 +2,7 @@ require("juleswhi.set")
 require("juleswhi.remap")
 require("juleswhi.lazy_init")
 
-vim.cmd([[colorscheme rose-pine]])
+vim.cmd([[colorscheme bamboo]])
 
 local augroup = vim.api.nvim_create_augroup
 local julesgroup = augroup('JulesWhite', {})
