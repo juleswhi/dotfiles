@@ -1,4 +1,20 @@
 {
+  "git": {
+    "blame": {
+      "show_avatar": false
+    },
+    "inline_blame": {
+      "show_commit_summary": false,
+      "enabled": false
+    },
+    "git_gutter": "hide"
+  },
+  "file_finder": {
+    "modal_max_width": "medium",
+    "git_status": false,
+    "file_icons": false,
+    "include_ignored": "all"
+  },
   "disable_ai": true,
   "lsp_highlight_debounce": 0,
   "hover_popover_delay": 0,
@@ -15,9 +31,10 @@
     "button": true
   },
   "git_panel": {
-    "button": true
+    "button": false
   },
   "outline_panel": {
+    "git_status": false,
     "button": true
   },
   "active_pane_modifiers": {},
@@ -63,7 +80,7 @@
     "starts_open": true,
     "auto_fold_dirs": true,
     "show_diagnostics": "off",
-    "git_status": true,
+    "git_status": false,
     "folder_icons": false,
     "file_icons": false,
     "button": false
@@ -97,6 +114,11 @@
     "breadcrumbs": true
   },
   "scrollbar": {
+    "git_diff": false,
+    "axes": {
+      "vertical": false,
+      "horizontal": false
+    },
     "selected_symbol": false,
     "selected_text": false,
     "show": "never"
@@ -130,6 +152,6 @@
   "base_keymap": "VSCode",
   "icon_theme": "Zed (Default)",
   "ui_font_size": 15.0,
-  "buffer_font_size": 16.0,
+  "buffer_font_size": 20.0,
   "theme": "Zedokai (Filter Ristretto)"
 }

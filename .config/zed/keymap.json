@@ -11,6 +11,7 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
+      "space c": "workspace::ClearAllNotifications",
       "space e": "workspace::ToggleLeftDock",
       "ctrl-/": "workspace::ToggleBottomDock",
       "space f": "editor::Format",
@@ -59,6 +60,11 @@
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown"
       // ... or other keybindings
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-o": "workspace::Open"
     }
   }
 ]
