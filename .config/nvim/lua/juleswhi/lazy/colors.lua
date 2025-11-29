@@ -26,7 +26,7 @@ return {
     },
     { "catppuccin/nvim",       name = "catppuccin", priority = 1000 },
     { "rebelot/kanagawa.nvim", name = "kanagawa",   priority = 1000 },
-    { "Mofiqul/vscode.nvim",   name = "vscode",         priority = 1000 },
+    { "Mofiqul/vscode.nvim",   name = "vscode",     priority = 1000 },
     {
         'ribru17/bamboo.nvim',
         lazy = false,
@@ -38,5 +38,11 @@ return {
             require('bamboo').load()
         end,
     },
+    {
+        "wnkz/monoglow.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    }
 
 }

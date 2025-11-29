@@ -1,0 +1,54 @@
+{
+  "debugger": {
+    "button": false
+  },
+  "search": {
+    "button": false
+  },
+  "diagnostics": {
+    "button": false
+  },
+  "terminal": {
+    "button": false
+  },
+  "status_bar": {
+    "cursor_position_button": false,
+    "active_language_button": false
+  },
+  "project_panel": {
+    "button": false
+  },
+  "outline_panel": {
+    "git_status": false
+  },
+  "file_finder": {
+    "git_status": false
+  },
+  "scrollbar": {
+    "git_diff": false
+  },
+  "rounded_selection": false,
+  "current_line_highlight": "none",
+  "unnecessary_code_fade": 0.0,
+  "selection_highlight": false,
+  "cursor_shape": "block",
+  "cursor_blink": false,
+  "ui_font_weight": 600.0,
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_line_height": "standard",
+  "buffer_font_weight": 600.0,
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "auto_update": false,
+  "redact_private_values": true,
+  "on_last_window_closed": "quit_app",
+  "when_closing_with_no_tabs": "close_window",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "ui_font_size": 16.0,
+  "buffer_font_size": 20.0,
+  "theme": "Rosé Pine Moon",
+  "vim_mode": true,
+  "vim": { "toggle_relative_line_numbers": true }
+}

@@ -1,9 +1,9 @@
 [[ $- != *i* ]] && return
 
-
 stty -ixon
 shopt -s autocd
 
+eval $(opam env)
 eval "$(fzf --bash)"
 
 alias ls='ls --color=auto'
